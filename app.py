@@ -54,7 +54,7 @@ if password == "altran@2020":
 	status_count= data['Status'].value_counts()
 	status_count=pd.DataFrame({'Status':status_count.index, 'Count':status_count.values})
 	offer_count=data['Offer Date'].value_counts()
-	offer_count=data.groupby('Offer Date').count()
+	offer_count=data.groupby('Offer Date').sum()
 	st.write(offer_count)
 
 
