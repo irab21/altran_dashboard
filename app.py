@@ -233,7 +233,7 @@ if password== 'blackhawk@2020':
 
 	st.markdown('### Number Of Positive Conversions, Negative Conversions And Pending Conversions')
 	st.write('\n\n')
-	st.write('\n\n As can be seen, out of %s total selections:\n\n %s candidates were offered \n\n Out of which, %s Candidates were Positively Converted \n\n %s Candidates were not Converted \n\n %s Candidate Conversions are still Pending '%(total_selections1.values[0],offer_count.values[1],total_selections.values[2,2],total_selections.values[0,0],total_selections.values[1,1]))
+	st.write('\n\n As can be seen, out of %s total selections:\n\n %s candidates were offered \n\n Out of which, %s Candidates were Positively Converted \n\n %s Candidates were not Converted \n\n %s Candidate Conversions are still Pending '%(total_selections1.values[0],offer_count.values[1],total_selections.values[1,1],total_selections.values[0,0],0))
 	if st.sidebar.checkbox('Visual',True, key=4):
 		fig1=px.pie(status_count, values='Count',names='Status')
 		st.plotly_chart(fig1)
@@ -310,7 +310,7 @@ if password== 'blackhawk@2020':
 	#st.write(joining_tat_count)
 	st.markdown('### Joining TAT')
 	st.write("Joining Turn Around Time (TAT) represents the time in terms of **Days** taken by %s to convert the status of a candidate from Offer to Joining"%(clients.index[0]))
-	st.write("**%s** Positive Conversions took place,\n\n **%s** Days on an average were taken for an Offer a Joining after offer confirmation \n\n**%s** Days were the minimum number of days taken for the same \n\n **%s** days were the maximum number of days taken for a joining."%(total_selections.values[2,2],joining_tat_count.values[0,1],joining_tat_count.values[1,1],joining_tat_count.values[2,1]))
+	st.write("**%s** Positive Conversions took place,\n\n **%s** Days on an average were taken for an Offer a Joining after offer confirmation \n\n**%s** Days were the minimum number of days taken for the same \n\n **%s** days were the maximum number of days taken for a joining."%(total_selections.values[1,1],joining_tat_count.values[0,1],joining_tat_count.values[1,1],joining_tat_count.values[2,1]))
 	if st.sidebar.checkbox('Visual',True,key=5):
 		fig5=px.bar(joining_tat_count,x='Joining TAT',y='days', color='days',text='days',title='Max,Average and Min TAT for Joining', hover_name="Joining TAT",hover_data=['days'],height=500)
 		fig5.update_traces(texttemplate='%{text: .2s}', textposition='outside',width=0.4)
