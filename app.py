@@ -350,7 +350,7 @@ if password== 'blackhawk@2020':
 
 if password== 'bottomline@2020':
 
-	image_url='\posterityfinal.png'
+	image_url='posterityfinal.png'
 	image= Image.open(image_url) 
 	st.image(image,width=350)
 
