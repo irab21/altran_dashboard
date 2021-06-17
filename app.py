@@ -53,6 +53,8 @@ if password == "altran@2020":
 	#newdataframe
 	status_count= data['Status'].value_counts()
 	status_count=pd.DataFrame({'Status':status_count.index, 'Count':status_count.values})
+	offer_count=data['Offer Date'].value_counts()
+	st.write(offer_count)
 
 
 	st.markdown('### Number Of Positive Conversions, Negative Conversions And Pending Conversions')
