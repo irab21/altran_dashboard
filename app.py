@@ -545,7 +545,7 @@ if password== 'britishtelecom@2020':
 	total_selections1=data['Client'].value_counts()
 	total_selections1=data.groupby('Client').count()
 	total_selections1=total_selections1.sum()
-	st.write(total_selections1)
+	#st.write(total_selections1)
 	#st.write(total_selections)
 
 	clients= data['Client'].value_counts()
@@ -561,7 +561,7 @@ if password== 'britishtelecom@2020':
 	#newdataframe
 	status_count= data['Status'].value_counts()
 	status_count=pd.DataFrame({'Status':status_count.index, 'Count':status_count.values})
-	st.write(status_count)
+	#st.write(status_count)
 
 	st.markdown('### Number Of Positive Conversions, Negative Conversions And Pending Conversions')
 	st.write('\n\n')
