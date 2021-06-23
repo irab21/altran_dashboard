@@ -523,12 +523,12 @@ if password== 'bottomline@2020':
 
 if password== 'britishtelecom@2020':
 
-	image_url='posterityfinal.png'
+	image_url='C:\\Users\\DELL\\Desktop\\posterityfinal.png'
 	image= Image.open(image_url) 
 	st.image(image,width=350)
 
 
-	DATA_URL= 'file4.xlsx'
+	DATA_URL= 'C:\\Users\\DELL\\Desktop\\file4.xlsx'
 
 	#@st.cache(persist =True)
 	def load_data():
@@ -545,7 +545,7 @@ if password== 'britishtelecom@2020':
 	total_selections1=data['Client'].value_counts()
 	total_selections1=data.groupby('Client').count()
 	total_selections1=total_selections1.sum()
-	#st.write(total_selections1)
+	st.write(total_selections1)
 	#st.write(total_selections)
 
 	clients= data['Client'].value_counts()
@@ -557,19 +557,15 @@ if password== 'britishtelecom@2020':
 	st.sidebar.markdown('### A Review of the past year ')
 
 	st.sidebar.markdown("### Number Of Positive Coneversions, Negative Conversions, and Pending Conversions")
-	
+
 	#newdataframe
 	status_count= data['Status'].value_counts()
 	status_count=pd.DataFrame({'Status':status_count.index, 'Count':status_count.values})
-	offer_count=data['Offer Date'].value_counts()
-	offer_count=data.groupby('Offer Date').count()
-	offer_count=offer_count.sum()
-	#st.write(offer_count)
-
+	st.write(status_count)
 
 	st.markdown('### Number Of Positive Conversions, Negative Conversions And Pending Conversions')
 	st.write('\n\n')
-	st.write('\n\n As can be seen, out of %s total selections:\n\n %s candidates were offered \n\n Out of which, %s Candidates were Positively Converted \n\n %s Candidates were not Converted \n\n %s Candidate Conversions are still Pending '%(total_selections1.values[0],offer_count.values[1],total_selections.values[2,2],total_selections.values[0,0],total_selections.values[1,1]))
+	st.write('\n\n As can be seen, out of %s total selections:\n\n %s Candidates were Positively Converted \n\n %s Candidates were not Converted \n\n %s Candidate Conversions are still Pending '%(total_selections1.values[0],total_selections.values[2,2],total_selections.values[0,0],total_selections.values[1,1]))
 	if st.sidebar.checkbox('Visual',True, key=4):
 		fig1=px.pie(status_count, values='Count',names='Status')
 		st.plotly_chart(fig1)
@@ -602,7 +598,7 @@ if password== 'britishtelecom@2020':
 		st.plotly_chart(fig2)
 
 
-	st.write(level_conversion)
+	#st.write(level_conversion)
 
 
 	st.sidebar.markdown("### Selection TAT")
@@ -677,6 +673,51 @@ if password== 'britishtelecom@2020':
 		plt.yticks([])
 		st.pyplot()
 	st.write('As can be seen, this is a WordCloud of all the skills and Roles for which Posterity worked on for %s'%clients.index[0])
+	st.write("\n\n_____________________________________________________________________________________________________________________")
+	st.write("***Diversity Ratio***")
+
+	gender_data=data['Gender'].value_counts()
+	gender_data=data.groupby('Gender').count()
+	gender_data=pd.DataFrame({'Gender':['Female','Male'],'values':[10,13]})
+	submission_data=data['Submission Date']
+	status_data=data['Status']
+	st.write("For the Selected Candidates the Diversity Percentage was:")
+	fig6=px.pie(gender_data,names='Gender',values='values')
+#gender_data=pd.DataFrame(
+	
+	st.plotly_chart(fig6)
+
+	st.write("For Offered Candidates the Diversity Percentage was:")
+	fig8=px.pie(names=['Female','Male'],values=[7,10])
+	st.plotly_chart(fig8)
+
+	st.write("For Candidates who joined the Diversity Percentage was:")
+	fig9=px.pie(names=['Female','Male'],values=[4,8])
+	st.plotly_chart(fig9)
+
+	st.write("***Throughput ratios***")
+	total_submissions=data['Submission Date'].count()
+	selections=data['Selection Date'].count()
+	offers=data['Offer Date'].count()
+	joinings=data['Joining Date'].count()
+	offer_percent=round(offers/selections*100)
+	joining_percent=round(joinings/offers*100)
+	st.write("As can be seen, out of total **23** Selections, **17** Candidates received Offers and **12** Candidates Joined")
+	st.write("There was a "+str(offer_percent)+"% Selection Conversion and "+str(joining_percent)+"% Offer Conversion")
+	df=pd.DataFrame({'Stage':['Selections','Offers','Joining'],'Number':[[selections],[offers],[joinings]]})
+#	st.write(df)
+	fi7=px.funnel(df,y=['Selection','Offers','Joining'],x=[23,17,12],labels='Number of Candidates')
+	st.plotly_chart(fi7)
+
+
+
+
+	st.write("Hiring was done for the ***Gurugram*** Location")
+
+	st.map(data)
+
+
+
 
 
 
@@ -684,6 +725,7 @@ if password== 'britishtelecom@2020':
 	st.subheader('With that We thank %s  '% (clients.index[0])) 
 	st.write('for their association with Posterity Solutions for FY 2020-21. \n\n We hope the interactive dashboard could give you an insight on the Client Engagement, our values are founded on. \n\n We look forward to a long and mutually fruitful association with you. \n\n Regards Posterity ')
 	st.image(image,width=150)
+
 
 if password== 'datacore@2020':
 
