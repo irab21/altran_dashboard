@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
 from PIL import Image
+from plotly.subplots import make_subplots
 
 
 password= st.text_input('Please Enter The Password')
