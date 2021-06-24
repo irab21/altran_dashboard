@@ -676,24 +676,17 @@ if password== 'britishtelecom@2020':
 	st.write("\n\n_____________________________________________________________________________________________________________________")
 	st.write("***Diversity Ratio***")
 
-	gender_data=data['Gender'].value_counts()
-	gender_data=data.groupby('Gender').count()
-	gender_data=pd.DataFrame({'Gender':['Female','Male'],'values':[10,13]})
-	submission_data=data['Submission Date']
-	status_data=data['Status']
-	st.write("For the Selected Candidates the Diversity Percentage was:")
-	fig6=px.pie(gender_data,names='Gender',values='values')
-#gender_data=pd.DataFrame(
-	
-	st.plotly_chart(fig6)
+	st.write("The figure depicts the diversity percentage in all the three stages from selection to joining of candidates.")
+	labels=['Female','Male']
+	fig10 = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'},{'type':'domain'}]])
+	fig10.add_trace(go.Pie(labels=labels, values=[10,13], name="Selected Candidates Diversity Percentage"),1, 1)
+	fig10.add_trace(go.Pie(labels=labels, values=[7,10], name="Offered Candidates Diversity Percentage"),1, 2)
+	fig10.add_trace(go.Pie(labels=labels, values=[4,8], name="Joined Candidates Diversity Percentage"),1, 3)
 
-	st.write("For Offered Candidates the Diversity Percentage was:")
-	fig8=px.pie(names=['Female','Male'],values=[7,10])
-	st.plotly_chart(fig8)
-
-	st.write("For Candidates who joined the Diversity Percentage was:")
-	fig9=px.pie(names=['Female','Male'],values=[4,8])
-	st.plotly_chart(fig9)
+	fig10.update_traces(hole=.4, hoverinfo="label+percent+name")
+	fig10.update_layout(title_text="Diversity Percentage for all three stages",annotations=[dict(text='Selections', x=0.09, y=0.5, font_size=12, showarrow=False),
+                 dict(text='Offered', x=0.50, y=0.5, font_size=12, showarrow=False),dict(text='Joined', x=0.90, y=0.5, font_size=12, showarrow=False)])
+	st.plotly_chart(fig10)
 
 	st.write("***Throughput ratios***")
 	total_submissions=data['Submission Date'].count()
