@@ -532,12 +532,9 @@ if password== 'britishtelecom@2020':
 		
 
 	#@st.cache(persist =True)
-		def load_data():
+		
 		data = pd.read_excel(uploaded_file)
-		return data
-
-
-	data = load_data()
+		
 	
 	image_url='posterityfinal.png'
 	image= Image.open(image_url) 
