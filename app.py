@@ -532,7 +532,7 @@ if password== 'britishtelecom@2020':
 		
 
 	#@st.cache(persist =True)
-	def load_data():
+		def load_data():
 		data = pd.read_excel(uploaded_file)
 		return data
 
