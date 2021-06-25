@@ -525,20 +525,21 @@ if password== 'bottomline@2020':
 if password== 'britishtelecom@2020':
 
 
-
-	uploaded_file = st.file_uploader("Choose a file")
-	if uploaded_file is not None:
-
-		
-
-	#@st.cache(persist =True)
-		
-		data = pd.read_excel(uploaded_file)
-		
-	
 	image_url='posterityfinal.png'
 	image= Image.open(image_url) 
 	st.image(image,width=350)
+	
+	DATA_URL= 'file4.xlsx'
+
+	#@st.cache(persist =True)
+	def load_data():
+		data = pd.read_excel(DATA_URL)
+		return data
+
+
+	data = load_data()
+	
+	
 
 	total_selections=data['Status'].value_counts()
 	total_selections=data.groupby('Status').count()
