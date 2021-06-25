@@ -529,11 +529,11 @@ if password== 'britishtelecom@2020':
 	uploaded_file = st.file_uploader("Choose a file")
 	if uploaded_file is not None:
 
-		data = pd.read_excel(uploaded_file)
+		
 
 	#@st.cache(persist =True)
 	def load_data():
-		data = pd.read_excel(data)
+		data = pd.read_excel(uploaded_file)
 		return data
 
 
