@@ -613,7 +613,7 @@ if password== 'britishtelecom@2020':
 	#st.write(selection_tat_count)
 	st.markdown('### Selection TAT')
 	st.write("Selection Turn Around Time (TAT) represents the Time in terms of **Days** taken by %s to select a submitted candidate"%(clients.index[0]))
-	st.write("**%s** Days were taken on an average for a selection of a submitted candidate. \n\n**%s** days was the maximum number of days taken for the same \n\n **%s** days was the minimum number of days that was taken for a selection"%(selection_tat_count.values[0,1],selection_tat_count.values[2,1],selection_tat_count.values[1,1]))
+	st.write("**%s** Days were taken on an average for a selection of a submitted candidate. \n\n**%s** days was the maximum number of days taken for the same \n\n **%s** days was the minimum number of days that was taken for a selection of a submitted candidate"%(selection_tat_count.values[0,1],selection_tat_count.values[2,1],selection_tat_count.values[1,1]))
 	if st.sidebar.checkbox('Visual',True,key=2):
 		fig3=px.bar(selection_tat_count,x='Selection TAT',y='Days', color='Days', text='Days',title='Max, Average and Min TAT For Selection', hover_name='Selection TAT',hover_data=['Days'],height=600)
 		fig3.update_traces(texttemplate='%{text:.2s}', textposition='outside',width=0.4)
