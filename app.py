@@ -592,7 +592,7 @@ if password== 'britishtelecom@2020':
 	level_conversion1=level_conversion1.loc[:,"Joining TAT"]
 	level_roles = pd.DataFrame({'Level Of Roles':level_roles.index, 'Count Of Selections': level_roles.values, 'Count Of Joinings': level_conversion1.values })
 	st.markdown("### Level of Roles Worked On")
-	st.write('Posterity worked on over **%s** skills and roles for %s. \n\n Maximum hiring was done for the Backend Devloper Role and Java as the skill'%(skill.values[0],clients.index[0] ))
+	st.write('Posterity worked on over **%s** skills and roles for %s.'%(skill.values[0],clients.index[0] ))
 	st.write('Hiring was done for three levels, **Junior Level** for Offered CTC < 15 LPA, **Middle Level** for offered CTC Between 15 LPA to 35 LPA, and **Senior Level** for Offered CTC > 35 LPA, Roles. \n\n **%s** Selections were done for the Junior Level roles. \n\n **%s** Selections were done for the Middle Level Roles. \n\n **%s** Selections were done for Senior Level roles'%(level_conversion.values[0,0],level_conversion.values[1,1],0))
 	st.write('Hover Over the Graph to Know the Number of Selections and Joinings for each Level.')
 	if st.sidebar.checkbox('Visual',True,key=1):
@@ -613,7 +613,7 @@ if password== 'britishtelecom@2020':
 	#st.write(selection_tat_count)
 	st.markdown('### Selection TAT')
 	st.write("Selection Turn Around Time (TAT) represents the Time in terms of **Days** taken by %s to select a submitted candidate"%(clients.index[0]))
-	st.write("**%s** Days were taken on an average for a selection. \n\n**%s** days was the maximum number of days that was taken for a selection \n\n **%s** days was the minimum number of days that was taken for a selection"%(selection_tat_count.values[0,1],selection_tat_count.values[2,1],selection_tat_count.values[1,1]))
+	st.write("**%s** Days were taken on an average for a selection of a submitted candidate. \n\n**%s** days was the maximum number of days taken for the same \n\n **%s** days was the minimum number of days that was taken for a selection"%(selection_tat_count.values[0,1],selection_tat_count.values[2,1],selection_tat_count.values[1,1]))
 	if st.sidebar.checkbox('Visual',True,key=2):
 		fig3=px.bar(selection_tat_count,x='Selection TAT',y='Days', color='Days', text='Days',title='Max, Average and Min TAT For Selection', hover_name='Selection TAT',hover_data=['Days'],height=600)
 		fig3.update_traces(texttemplate='%{text:.2s}', textposition='outside',width=0.4)
