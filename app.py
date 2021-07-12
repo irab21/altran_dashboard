@@ -170,6 +170,41 @@ if password == "altran@2020":
 		plt.yticks([])
 		st.pyplot()
 	st.write('As can be seen, this is a WordCloud of all the skills and Roles for which Posterity worked on for %s'%clients.index[0])
+	
+	st.write("***Diversity Ratio***")
+
+	st.write("The figure depicts the diversity percentage in all the three stages from selection to joining of candidates.")
+	labels=['Female','Male']
+	fig10 = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'},{'type':'domain'}]])
+	fig10.add_trace(go.Pie(labels=labels, values=[10,13], name="Selected Candidates Diversity Percentage"),1, 1)
+	fig10.add_trace(go.Pie(labels=labels, values=[7,10], name="Offered Candidates Diversity Percentage"),1, 2)
+	fig10.add_trace(go.Pie(labels=labels, values=[4,8], name="Joined Candidates Diversity Percentage"),1, 3)
+
+	fig10.update_traces(hole=.4, hoverinfo="label+percent+name")
+	fig10.update_layout(title_text="Diversity Percentage for all three stages",annotations=[dict(text='Selections', x=0.09, y=0.5, font_size=12, showarrow=False),
+                 dict(text='Offered', x=0.50, y=0.5, font_size=12, showarrow=False),dict(text='Joined', x=0.90, y=0.5, font_size=12, showarrow=False)])
+	st.plotly_chart(fig10)
+
+	st.write("***Throughput ratios***")
+	total_submissions=data['Submission Date'].count()
+	selections=data['Selection Date'].count()
+	offers=data['Offer Date'].count()
+	joinings=data['Joining Date'].count()
+	offer_percent=round(offers/selections*100)
+	joining_percent=round(joinings/offers*100)
+	st.write("As can be seen, out of total **23** Selections, **17** Candidates received Offers and **12** Candidates Joined")
+	st.write("There was a "+str(offer_percent)+"% Selection Conversion and "+str(joining_percent)+"% Offer Conversion")
+	df=pd.DataFrame({'Stage':['Selections','Offers','Joining'],'Number':[[selections],[offers],[joinings]]})
+#	st.write(df)
+	fi7=px.funnel(df,y=['Selection','Offers','Joining'],x=[23,17,12],labels='Number of Candidates')
+	st.plotly_chart(fi7)
+
+
+
+
+	st.write("Hiring was done for the ***Gurugram*** Location")
+
+	st.map(data)
 
 
 
