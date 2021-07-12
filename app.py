@@ -196,13 +196,13 @@ if password == "altran@2020":
 	st.write("There was a "+str(offer_percent)+"% Selection Conversion and "+str(joining_percent)+"% Offer Conversion")
 	df=pd.DataFrame({'Stage':['Selections','Offers','Joining'],'Number':[[selections],[offers],[joinings]]})
 #	st.write(df)
-	fi7=px.funnel(df,y=['Selection','Offers','Joining'],x=[23,17,12],labels='Number of Candidates')
+	fi7=px.funnel(df,y=['Selection','Offers','Joining'],x=[58,38,17],labels='Number of Candidates')
 	st.plotly_chart(fi7)
 
 
 
 
-	st.write("Hiring was done for the ***Gurugram*** Location")
+	st.write("Hiring was done for the ***Gurugram,Bangalore,Pune,Hyderabad and Noida*** Locations")
 
 	st.map(data)
 
