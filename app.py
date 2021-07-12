@@ -176,9 +176,9 @@ if password == "altran@2020":
 	st.write("The figure depicts the diversity percentage in all the three stages from selection to joining of candidates.")
 	labels=['Female','Male']
 	fig10 = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'},{'type':'domain'}]])
-	fig10.add_trace(go.Pie(labels=labels, values=[10,13], name="Selected Candidates Diversity Percentage"),1, 1)
-	fig10.add_trace(go.Pie(labels=labels, values=[7,10], name="Offered Candidates Diversity Percentage"),1, 2)
-	fig10.add_trace(go.Pie(labels=labels, values=[4,8], name="Joined Candidates Diversity Percentage"),1, 3)
+	fig10.add_trace(go.Pie(labels=labels, values=[7,51], name="Selected Candidates Diversity Percentage"),1, 1)
+	fig10.add_trace(go.Pie(labels=labels, values=[5,33], name="Offered Candidates Diversity Percentage"),1, 2)
+	fig10.add_trace(go.Pie(labels=labels, values=[1,16], name="Joined Candidates Diversity Percentage"),1, 3)
 
 	fig10.update_traces(hole=.4, hoverinfo="label+percent+name")
 	fig10.update_layout(title_text="Diversity Percentage for all three stages",annotations=[dict(text='Selections', x=0.09, y=0.5, font_size=12, showarrow=False),
@@ -192,7 +192,7 @@ if password == "altran@2020":
 	joinings=data['Joining Date'].count()
 	offer_percent=round(offers/selections*100)
 	joining_percent=round(joinings/offers*100)
-	st.write("As can be seen, out of total **23** Selections, **17** Candidates received Offers and **12** Candidates Joined")
+	st.write("As can be seen, out of total **58** Selections, **38** Candidates received Offers and **17** Candidates Joined")
 	st.write("There was a "+str(offer_percent)+"% Selection Conversion and "+str(joining_percent)+"% Offer Conversion")
 	df=pd.DataFrame({'Stage':['Selections','Offers','Joining'],'Number':[[selections],[offers],[joinings]]})
 #	st.write(df)
