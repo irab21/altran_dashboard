@@ -207,7 +207,7 @@ if password == "altran@2020":
 	lon=data['lon']
 	map=pd.DataFrame({'lat':lat.values,'lon':lon.values})
 
-	st.map(map)
+	st.write(map)
 
 
 
