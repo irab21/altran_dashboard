@@ -142,7 +142,7 @@ if password == "altran@2020":
 	#st.write(joining_tat_count)
 	st.markdown('### Joining TAT')
 	st.write("Joining Turn Around Time (TAT) represents the time in terms of **Days** taken by %s to convert the status of a candidate from Offer to Joining"%(clients.index[0]))
-	st.write("**%s** Positive Conversions took place,\n\n **%s** Days on an average were taken for an Offer a Joining after offer confirmation \n\n**%s** Days were the minimum number of days taken for the same \n\n **%s** days were the maximum number of days taken for a joining."%(total_selections.values[2,2],joining_tat_count.values[0,1],joining_tat_count.values[1,1],joining_tat_count.values[2,1]))
+	st.write("**%s** Positive Conversions took place,\n\n **%s** Days on an average were taken for an Offer a Joining after offer confirmation \n\n**%s** Days were the minimum number of days taken for the same \n\n **%s** days were the maximum number of days taken for a joining."%(total_selections.values[1,2],joining_tat_count.values[0,1],joining_tat_count.values[1,1],joining_tat_count.values[2,1]))
 	if st.sidebar.checkbox('Visual',True,key=5):
 		fig5=px.bar(joining_tat_count,x='Joining TAT',y='days', color='days',text='days',title='Max,Average and Min TAT for Joining', hover_name="Joining TAT",hover_data=['days'])
 		fig5.update_traces(texttemplate='%{text: .2s}', textposition='outside',width=0.4)
@@ -192,11 +192,11 @@ if password == "altran@2020":
 	joinings=data['Joining Date'].count()
 	offer_percent=round(offers/selections*100)
 	joining_percent=round(joinings/offers*100)
-	st.write("As can be seen, out of total **58** Selections, **38** Candidates received Offers and **17** Candidates Joined")
+	st.write("As can be seen, out of total **80** Selections, **55** Candidates received Offers and **24** Candidates Joined")
 	st.write("There was a "+str(offer_percent)+"% Selection Conversion and "+str(joining_percent)+"% Offer Conversion")
 	df=pd.DataFrame({'Stage':['Selections','Offers','Joining'],'Number':[[selections],[offers],[joinings]]})
 #	st.write(df)
-	fi7=px.funnel(df,y=['Selection','Offers','Joining'],x=[58,38,17],labels='Number of Candidates')
+	fi7=px.funnel(df,y=['Selection','Offers','Joining'],x=[80,55,24],labels='Number of Candidates')
 	st.plotly_chart(fi7)
 
 
