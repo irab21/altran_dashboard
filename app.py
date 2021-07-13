@@ -60,7 +60,7 @@ if password == "altran@2020":
 
 	st.markdown('### Number Of Positive Conversions, Negative Conversions And Pending Conversions')
 	st.write('\n\n')
-	st.write('\n\n As can be seen, out of %s total selections: \n\n Out of which, %s Candidates were Positively Converted \n\n %s Candidates were not Converted \n\n %s Candidate Conversions are still Pending '%(total_selections1.values[0],total_selections.values[1,2],total_selections.values[0,0],total_selections.values[2,0]))
+	st.write('\n\n As can be seen, out of %s total selections: \n\n Out of which, %s Candidates were Positively Converted \n\n %s Candidates were not Converted '%(total_selections1.values[0],total_selections.values[0,2],total_selections.values[0,1]))
 	if st.sidebar.checkbox('Visual',True, key=4):
 		fig1=px.pie(status_count, values='Count',names='Status')
 		st.plotly_chart(fig1)
@@ -190,7 +190,7 @@ if password == "altran@2020":
 	joinings=data['Joining Date'].count()
 	offer_percent=round(offers/selections*100)
 	joining_percent=round(joinings/offers*100)
-	st.write("As can be seen, out of total **80** Selections, **55** Candidates received Offers and **24** Candidates Joined")
+	st.write("As can be seen, out of total **80** Selections,**24** Candidates Joined")
 	st.write("There was a "+str(offer_percent)+"% Selection Conversion and "+str(joining_percent)+"% Offer Conversion")
 	df=pd.DataFrame({'Stage':['Selections','Offers','Joining'],'Number':[[selections],[offers],[joinings]]})
 #	st.write(df)
