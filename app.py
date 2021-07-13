@@ -33,8 +33,8 @@ if password == "altran@2020":
 	total_selections1=data['Client'].value_counts()
 	total_selections1=data.groupby('Client').count()
 	total_selections1=total_selections1.sum()
-	st.write(total_selections1)
-	st.write(total_selections)
+	#st.write(total_selections1)
+	#st.write(total_selections)
 
 	
 	
@@ -55,7 +55,7 @@ if password == "altran@2020":
 	offer_count=data['Offer Date'].value_counts()
 	offer_count=data.groupby('Offer Date').count()
 	offer_count=offer_count.sum()
-	st.write(offer_count)
+	#st.write(offer_count)
 
 
 	st.markdown('### Number Of Positive Conversions, Negative Conversions And Pending Conversions')
@@ -83,7 +83,7 @@ if password == "altran@2020":
 	level_conversion1=data.groupby('Level').count()
 	level_conversion1=level_conversion1.loc[:,"Joining TAT"]
 	level_roles = pd.DataFrame({'Level Of Roles':level_roles.index, 'Count Of Selections': level_roles.values, 'Count Of Joinings': level_conversion1.values })
-	st.write(level_roles)
+	#st.write(level_roles)
 	st.markdown("### Level of Roles Worked On")
 	st.write('Posterity worked on over **%s** skills and roles for %s. \n\n Maximum hiring was done for the Backend Devloper Role and Java as the skill'%(skill.values[0],clients.index[0]) )
 	st.write('Hiring was done for two levels, **Junior Level** for Offered CTC < 15 LPA, and **Senior Level** for Offered CTC > 35 LPA, Roles. \n\n **%s** Selections were done for the Junior Level roles. \n\n **%s** Selections were done for the Middle Level Roles. \n\n **%s** Selections were done for Senior Level roles'%(level_conversion.values[0,0],level_conversion.values[1,1],0))
