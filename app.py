@@ -33,8 +33,8 @@ if password == "altran@2020":
 	total_selections1=data['Client'].value_counts()
 	total_selections1=data.groupby('Client').count()
 	total_selections1=total_selections1.sum()
-	#st.write(total_selections1)
-	#st.write(total_selections)
+	st.write(total_selections1)
+	st.write(total_selections)
 
 	
 	
@@ -57,7 +57,7 @@ if password == "altran@2020":
 	offer_count=data['Offer Date'].value_counts()
 	offer_count=data.groupby('Offer Date').count()
 	offer_count=offer_count.sum()
-	#st.write(offer_count)
+	st.write(offer_count)
 
 
 	st.markdown('### Number Of Positive Conversions, Negative Conversions And Pending Conversions')
