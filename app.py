@@ -41,7 +41,7 @@ if password == "altran@2020":
 
 	clients= data['Client'].value_counts()
 	#titles
-	st.title('Client Report FY 2020-2021')
+	st.title('Client Report April-June 2021')
 	st.sidebar.title('%s  '% (clients.index[0]))
 
 	st.markdown('### By Posterity Better Solutions')
@@ -252,7 +252,7 @@ if password== 'blackhawk@2020':
 
 	clients= data['Client'].value_counts()
 	#titles
-	st.title('Client Report FY 2020-2021')
+	st.title('Client Report April-June 2021')
 	st.sidebar.title('%s  '% (clients.index[0]))
 
 	st.markdown('### By Posterity Better Solutions')
@@ -421,7 +421,7 @@ if password== 'bottomline@2020':
 
 	clients= data['Client'].value_counts()
 	#titles
-	st.title('Client Report FY 2020-2021')
+	st.title('Client Report April-June 2021')
 	st.sidebar.title('%s  '% (clients.index[0]))
 
 	st.markdown('### By Posterity Better Solutions')
@@ -591,7 +591,7 @@ if password== 'britishtelecom@2020':
 
 	clients= data['Client'].value_counts()
 	#titles
-	st.title('Client Report FY 2020-2021')
+	st.title('Client Report April-June 2021')
 	st.sidebar.title('%s  '% (clients.index[0]))
 
 	st.markdown('### By Posterity Better Solutions')
@@ -790,7 +790,7 @@ if password== 'datacore@2020':
 
 	clients= data['Client'].value_counts()
 	#titles
-	st.title('Client Report FY 2020-2021')
+	st.title('Client Report April-June 2021')
 	st.sidebar.title('%s  '% (clients.index[0]))
 
 	st.markdown('### By Posterity Better Solutions')
@@ -956,7 +956,7 @@ if password== 'delhivery@2020':
 
 	clients= data['Client'].value_counts()
 	#titles
-	st.title('Client Report FY 2020-2021')
+	st.title('Client April-June 2021')
 	st.sidebar.title('%s  '% (clients.index[0]))
 
 	st.markdown('### By Posterity Better Solutions')
@@ -1121,7 +1121,7 @@ if password== 'deloitte@2020':
 
 	clients= data['Client'].value_counts()
 	#titles
-	st.title('Client Report FY 2020-2021')
+	st.title('Client Report April-June 2021')
 	st.sidebar.title('%s  '% (clients.index[0]))
 
 	st.markdown('### By Posterity Better Solutions')
@@ -1287,7 +1287,7 @@ if password== 'grantthornton@2020':
 
 	clients= data['Client'].value_counts()
 	#titles
-	st.title('Client Report FY 2020-2021')
+	st.title('Client Report April-June 2021')
 	st.sidebar.title('%s  '% (clients.index[0]))
 
 	st.markdown('### By Posterity Better Solutions')
@@ -1453,7 +1453,7 @@ if password== 'r1rcm@2020':
 
 	clients= data['Client'].value_counts()
 	#titles
-	st.title('Client Report FY 2020-2021')
+	st.title('Client Report April-June 2021')
 	st.sidebar.title('%s  '% (clients.index[0]))
 
 	st.markdown('### By Posterity Better Solutions')
@@ -1618,7 +1618,7 @@ if password== 'airtelpaymentsbank@2020':
 
 	clients= data['Client'].value_counts()
 	#titles
-	st.title('Client Report FY 2020-2021')
+	st.title('Client Report April-June 2021')
 	st.sidebar.title('%s  '% (clients.index[0]))
 
 	st.markdown('### By Posterity Better Solutions')
