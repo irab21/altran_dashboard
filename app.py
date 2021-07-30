@@ -174,7 +174,8 @@ if password == "altran@2020":
 
 	st.write("The figure depicts the diversity percentage in all the three stages from selection to joining of candidates.")
 	labels=['Female','Male']
-	
+	gender_data=data.groupby('Gender')
+	st.write(gender_data)
 	fig10 = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'},{'type':'domain'}]])
 	fig10.add_trace(go.Pie(labels=labels, values=[0,6], name="Selected Candidates Diversity Percentage"),1, 1)
 	fig10.add_trace(go.Pie(labels=labels, values=[0,4], name="Offered Candidates Diversity Percentage"),1, 2)
