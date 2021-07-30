@@ -47,7 +47,7 @@ if password == "altran@2020":
 	st.markdown('### By Posterity Better Solutions')
 	st.sidebar.markdown('### A Review of the past year ')
 
-	st.sidebar.markdown("### Number Of Positive Coneversions, Negative Conversions, and Pending Conversions")
+	st.sidebar.markdown("### Number Of Positive Coneversions and Negative Conversions")
 
 	#newdataframe
 	status_count= data['Status'].value_counts()
@@ -58,7 +58,7 @@ if password == "altran@2020":
 	#st.write(offer_count)
 
 
-	st.markdown('### Number Of Positive Conversions, Negative Conversions And Pending Conversions')
+	st.markdown('### Number Of Positive Conversions and Negative Conversions')
 	st.write('\n\n')
 	st.write('\n\n As can be seen, out of %s total selections: \n\n Out of which, %s Candidates were Positively Converted \n\n %s Candidates were not Converted '%(total_selections1.values[0],total_selections.values[1,0],total_selections.values[0,0]))
 	if st.sidebar.checkbox('Visual',True, key=4):
@@ -191,12 +191,14 @@ if password == "altran@2020":
 	joinings=data['Joining Date'].count()
 	offer_percent=round(offers/selections*100)
 	joining_percent=round(joinings/offers*100)
-	st.write("As can be seen, out of total %s Selections, %s Candidates Joined"%(total_selections1.values[0],total_selections.values[0,0]))
+	st.write("As can be seen, out of total %s Selections, %s Candidates Joined"%(total_selections1.values[0],total_selections.values[1,0]))
 	st.write("There was a "+str(offer_percent)+"% Selection Conversion and "+str(joining_percent)+"% Offer Conversion")
 	df=pd.DataFrame({'Stage':['Selections','Joining'],'Number':[[selections],[joinings]]})
 #	st.write(df)
-	fi7=px.funnel(df,y=['Selection','Joining'],x=[80,24],labels='Number of Candidates')
-	st.plotly_chart(fi7)
+	df7=pd.DataFrame({'Stage':['Selections','Joining'],'Number':[[total_selections1.values[0],[total_selections.values[1,0]]]})
+	fi7=px.funnel(df,y=['Selections','Joining'],x=[80,24],labels='Number of Candidates')
+	fig7=px.funnerl(df7,x='Stage',y='Number',labels='Number of Candidates')
+	st.plotly_chart(fig7)
 
 
 
