@@ -195,7 +195,7 @@ if password == "altran@2020":
 	st.write("There was a "+str(offer_percent)+"% Selection Conversion and "+str(joining_percent)+"% Offer Conversion")
 	df=pd.DataFrame({'Stage':['Selections','Joining'],'Number':[[selections],[joinings]]})
 #	st.write(df)
-	df7=pd.DataFrame({'Stage':['Selections','Joining'],'Number':[[total_selections1.values[0],[total_selections.values[1,0]]]})
+	df7=pd.DataFrame({'Stage':['Selections','Joining'],'Number':[[total_selections1.values[0],[total_selections.values[1,0]]})
 	fi7=px.funnel(df,y=['Selections','Joining'],x=[80,24],labels='Number of Candidates')
 	fig7=px.funnerl(df7,x='Stage',y='Number',labels='Number of Candidates')
 	st.plotly_chart(fig7)
