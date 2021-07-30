@@ -201,13 +201,13 @@ if password == "altran@2020":
 
 
 
-	#st.write("Hiring was done for the ***Gurugram,Bangalore,Pune,Hyderabad,Delhi and Noida*** Locations")
-	#lat=data['lat']
-	#lon=data['lon']
-	#map=pd.DataFrame({'lat':lat.values,'lon':lon.values})
+	st.write("Hiring was done for the ***Gurugram,Bangalore,Pune,Hyderabad,Delhi and Noida*** Locations")
+	lat=data['lat']
+	lon=data['lon']
+	map=pd.DataFrame({'lat':lat.values,'lon':lon.values})
 
-	#st.write(map)
-	#st.map(map)
+	st.write(map)
+	st.map(map)
 
 
 
