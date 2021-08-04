@@ -730,12 +730,12 @@ if password== 'britishtelecom@2020':
 	level_roles = data['Level'].value_counts()
 	level_conversion1=data.groupby('Level').count()
 	level_conversion1=level_conversion1.loc[:,"Joining TAT"]
-	st.write(level_conversion1)
+	#st.write(level_conversion1)
 	level_roles = pd.DataFrame({'Level Of Roles':level_roles.index, 'Count Of Selections': level_roles.values, 'Count Of Joinings': level_conversion1.values })
-	st.write(level_roles)
+	#st.write(level_roles)
 	st.markdown("### Level of Roles Worked On")
 	st.write('Posterity worked on over **%s** skills and roles for %s.'%(skill.values[0],clients.index[0] ))
-	st.write('Hiring was done for three levels, **Junior Level** for Offered CTC < 15 LPA, **Middle Level** for offered CTC Between 15 LPA to 35 LPA, and **Senior Level** for Offered CTC > 35 LPA, Roles. \n\n **%s** Selections were done for the Junior Level roles. \n\n **%s** Selections were done for the Middle Level Roles. \n\n **%s** Selections were done for Senior Level roles'%(level_conversion.values[0,0],level_conversion.values[1,1],0))
+	st.write('Hiring was done for three levels, **Junior Level** for Offered CTC < 15 LPA, **Middle Level** for offered CTC Between 15 LPA to 35 LPA, and **Senior Level** for Offered CTC > 35 LPA, Roles. \n\n **%s** Selections were done for the Junior Level roles. \n\n **%s** Selections were done for the Middle Level Roles. \n\n **%s** Selections were done for Senior Level roles'%(level_conversion.values[0,0],level_conversion.values[1,1],level_cnversion.values[2,2]))
 	st.write('Hover Over the Graph to Know the Number of Selections and Joinings for each Level.')
 	if st.sidebar.checkbox('Visual',True,key=1):
 		fig2=px.area(level_roles, x='Level Of Roles', y= 'Count Of Selections',hover_name='Level Of Roles',hover_data=['Count Of Selections','Count Of Joinings'])
@@ -818,15 +818,17 @@ if password== 'britishtelecom@2020':
 		plt.yticks([])
 		st.pyplot()
 	st.write('As can be seen, this is a WordCloud of all the skills and Roles for which Posterity worked on for %s'%clients.index[0])
-	st.write("\n\n_____________________________________________________________________________________________________________________")
 	st.write("***Diversity Ratio***")
 
 	st.write("The figure depicts the diversity percentage in all the three stages from selection to joining of candidates.")
 	labels=['Female','Male']
+	gender_data=data.groupby('Gender').count()
+	#st.write(gender_data)
+	
 	fig10 = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'},{'type':'domain'}]])
-	fig10.add_trace(go.Pie(labels=labels, values=[10,13], name="Selected Candidates Diversity Percentage"),1, 1)
-	fig10.add_trace(go.Pie(labels=labels, values=[7,10], name="Offered Candidates Diversity Percentage"),1, 2)
-	fig10.add_trace(go.Pie(labels=labels, values=[4,8], name="Joined Candidates Diversity Percentage"),1, 3)
+	fig10.add_trace(go.Pie(labels=labels, values=[29,75], name="Selected Candidates Diversity Percentage"),1, 1)
+	fig10.add_trace(go.Pie(labels=labels, values=[22,48], name="Offered Candidates Diversity Percentage"),1, 2)
+	fig10.add_trace(go.Pie(labels=labels, values=[4,9],name="Joined Candidates Diversity Percentage"),1, 3)
 
 	fig10.update_traces(hole=.4, hoverinfo="label+percent+name")
 	fig10.update_layout(title_text="Diversity Percentage for all three stages",annotations=[dict(text='Selections', x=0.09, y=0.5, font_size=12, showarrow=False),
@@ -840,19 +842,25 @@ if password== 'britishtelecom@2020':
 	joinings=data['Joining Date'].count()
 	offer_percent=round(offers/selections*100)
 	joining_percent=round(joinings/offers*100)
-	st.write("As can be seen, out of total **23** Selections, **17** Candidates received Offers and **12** Candidates Joined")
+	st.write("As can be seen, out of total %s Selections, %s Candidates Joined"%(total_selections1.values[0],total_selections.values[1,0]))
 	st.write("There was a "+str(offer_percent)+"% Selection Conversion and "+str(joining_percent)+"% Offer Conversion")
-	df=pd.DataFrame({'Stage':['Selections','Offers','Joining'],'Number':[[selections],[offers],[joinings]]})
+	df=pd.DataFrame({'Stage':['Selections','Joining'],'Number':[[selections],[joinings]]})
 #	st.write(df)
-	fi7=px.funnel(df,y=['Selection','Offers','Joining'],x=[23,17,12],labels='Number of Candidates')
+	#df7=pd.DataFrame({'Stage':['Selections','Joining'],'Number':[[total_selections1.values[0],[total_selections.values[1,0]]]})
+	fi7=px.funnel(df,y='Stage',x=[selections,joinings],labels='Number of Candidates')
+	#fig7=px.funnel(df7,x='Stage',y='Number',labels='Number of Candidates')
 	st.plotly_chart(fi7)
 
 
 
 
-	st.write("Hiring was done for the ***Gurugram*** Location")
+	st.write("Hiring was done for the Highlighted Locations")
+	lat=data['lat']
+	lon=data['lon']
+	map=pd.DataFrame({'lat':lat.values,'lon':lon.values})
 
-	st.map(data)
+	#st.write(map)
+	st.map(map)
 
 
 
@@ -861,7 +869,7 @@ if password== 'britishtelecom@2020':
 
 	st.write("\n\n_____________________________________________________________________________________________________________________")
 	st.subheader('With that We thank %s  '% (clients.index[0])) 
-	st.write('for their association with Posterity Solutions for FY 2020-21. \n\n We hope the interactive dashboard could give you an insight on the Client Engagement, our values are founded on. \n\n We look forward to a long and mutually fruitful association with you. \n\n Regards Posterity ')
+	st.write('for their association with Posterity Solutions. \n\n We hope the interactive dashboard could give you an insight on the Client Engagement, our values are founded on. \n\n We look forward to a long and mutually fruitful association with you. \n\n Regards Posterity ')
 	st.image(image,width=150)
 
 
@@ -879,7 +887,7 @@ if password== 'datacore@2020':
 		data = pd.read_excel(DATA_URL)
 		return data
 
-
+ 
 	data = load_data()
 
 	total_selections=data['Status'].value_counts()
