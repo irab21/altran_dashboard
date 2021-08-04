@@ -261,9 +261,9 @@ if password== 'blackhawk@2020':
 	st.sidebar.title('%s  '% (clients.index[0]))
 
 	st.markdown('### By Posterity Better Solutions')
-	st.sidebar.markdown('### A Review of the past year ')
+	st.sidebar.markdown('### A Review of the past 4 Months ')
 
-	st.sidebar.markdown("### Number Of Positive Coneversions, Negative Conversions, and Pending Conversions")
+	st.sidebar.markdown("### Number Of Positive Coneversions and Negative Conversions")
 	
 	
 	#newdataframe
@@ -275,7 +275,7 @@ if password== 'blackhawk@2020':
 	#st.write(offer_count)
 
 
-	st.markdown('### Number Of Positive Conversions, Negative Conversions And Pending Conversions')
+	st.markdown('### Number Of Positive Conversions and Negative Conversions')
 	st.write('\n\n')
 	st.write('\n\n As can be seen, out of %s total selections:\n\n %s candidates were offered \n\n Out of which, %s Candidates were Positively Converted \n\n %s Candidates were not Converted \n\n %s Candidate Conversions are still Pending '%(total_selections1.values[0],offer_count.values[1],total_selections.values[1,1],total_selections.values[0,0],0))
 	if st.sidebar.checkbox('Visual',True, key=4):
@@ -298,8 +298,8 @@ if password== 'blackhawk@2020':
 	level_conversion1=level_conversion1.loc[:,"Joining TAT"]
 	level_roles = pd.DataFrame({'Level Of Roles':level_roles.index, 'Count Of Selections': level_roles.values, 'Count Of Joinings': level_conversion1.values })
 	st.markdown("### Level of Roles Worked On")
-	st.write('Posterity worked on over **%s** skills and roles for %s. \n\n Maximum hiring was done for the Backend Devloper Role and Java as the skill'%(skill.values[0],clients.index[0]) )
-	st.write('Hiring was done for three levels, **Junior Level** for Offered CTC < 15 LPA, **Middle Level** for offered CTC Between 15 LPA to 35 LPA, and **Senior Level** for Offered CTC > 35 LPA, Roles. \n\n **%s** Selections were done for the Junior Level roles. \n\n **%s** Selections were done for the Middle Level Roles. \n\n **%s** Selections were done for Senior Level roles'%(level_conversion.values[0,0],level_conversion.values[1,1],0))
+	st.write('Posterity worked on over **%s** different skills and roles for %s. \n\n Maximum hiring was done for the Backend Devloper Role and Java as the skill'%(skill.values[0],clients.index[0]) )
+	st.write('Hiring was done for three levels, **Junior Level** for Offered CTC < 15 LPA, **Middle Level** for offered CTC Between 15 LPA to 35 LPA, and **Senior Level** for Offered CTC > 35 LPA, Roles. \n\n **%s** Selections were done for the Junior Level roles. \n\n **%s** Selections were done for the Middle Level Roles. \n\n **%s** Selections were done for Senior Level roles'%(level_conversion.values[0,0],0,0))
 	st.write('Hover Over the Graph to Know the Number of Selections and Joinings for each Level.')
 	if st.sidebar.checkbox('Visual',True,key=1):
 		fig2=px.area(level_roles, x='Level Of Roles', y= 'Count Of Selections',hover_name='Level Of Roles',hover_data=['Count Of Selections','Count Of Joinings'])
