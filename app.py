@@ -584,7 +584,7 @@ if password== 'bottomline@2020':
 	st.sidebar.header('Word Cloud')
 
 	word_category= st.sidebar.radio('Display Word Cloud for Skill',('Skill','Role'))
-
+	
 	st.set_option('deprecation.showPyplotGlobalUse', False)
 	if st.sidebar.checkbox('Word Cloud',True,key=5):
 		st.header('Word Cloud for %s category' % (word_category))
@@ -602,6 +602,8 @@ if password== 'bottomline@2020':
 		plt.yticks([])
 		st.pyplot()
 	st.write('As can be seen, this is a WordCloud of all the skills and Roles for which Posterity worked on for %s'%clients.index[0])
+	
+
 	
 	st.write("***Diversity Ratio***")
 
