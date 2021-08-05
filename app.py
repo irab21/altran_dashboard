@@ -1696,7 +1696,7 @@ if password== 'grantthornton@2020':
 	offer_percent=round(offers/selections*100)
 	joining_percent=round(joinings/offers*100)
 	#st.write(pending)
-	st.write("As can be seen, out of total %s Selections, %s Candidates Joined"%(total_selections1.values[0],total_selections.values[2,2]))
+	st.write("As can be seen, out of total %s Selections, %s Candidates Joined"%(total_selections1.values[0],total_selections.values[1,1]))
 	st.write("There was a "+str(offer_percent)+"% Selection Conversion and "+str(joining_percent)+"% Offer Conversion")
 	df=pd.DataFrame({'Stage':['Selections','Offers','Joining'],'Number':[[selections],[offers],[joinings]]})
 #	st.write(df)
