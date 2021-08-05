@@ -1261,11 +1261,13 @@ if password== 'delhivery@2020':
 
 	st.write("***Throughput ratios***")
 	total_submissions=data['Submission Date'].count()
+	pending=data.groupby['Status'].count()
 	selections=data['Selection Date'].count()
 	offers=data['Offer Date'].count()
 	joinings=data['Joining Date'].count()
 	offer_percent=round(offers/selections*100)
 	joining_percent=round(joinings/offers*100)
+	st.write(pending)
 	st.write("As can be seen, out of total %s Selections, %s Candidates Joined"%(total_selections1.values[0],total_selections.values[1,0]))
 	st.write("There was a "+str(offer_percent)+"% Selection Conversion and "+str(joining_percent)+"% Offer Conversion")
 	df=pd.DataFrame({'Stage':['Selections','Joining'],'Number':[[selections],[joinings]]})
