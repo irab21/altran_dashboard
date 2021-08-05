@@ -1932,7 +1932,7 @@ if password== 'airtelpaymentsbank@2020':
 	offer_count=data['Offer Date'].value_counts()
 	offer_count=data.groupby('Offer Date').count()
 	offer_count=offer_count.sum()
-	#st.write(offer_count)
+	st.write(total_selections)
 
 
 	st.markdown('### Number Of Positive Conversions, Negative Conversions And Joining Pending')
