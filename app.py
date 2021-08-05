@@ -1922,9 +1922,9 @@ if password== 'airtelpaymentsbank@2020':
 	st.sidebar.title('%s  '% (clients.index[0]))
 
 	st.markdown('### By Posterity Better Solutions')
-	st.sidebar.markdown('### A Review of the past year ')
+	st.sidebar.markdown('### A Review of the past few months')
 
-	st.sidebar.markdown("### Number Of Positive Coneversions, Negative Conversions, and Pending Conversions")
+	st.sidebar.markdown("### Number Of Positive Coneversions, Negative Conversions, and Pending Joining")
 	
 	#newdataframe
 	status_count= data['Status'].value_counts()
@@ -1935,9 +1935,9 @@ if password== 'airtelpaymentsbank@2020':
 	#st.write(offer_count)
 
 
-	st.markdown('### Number Of Positive Conversions, Negative Conversions And Pending Conversions')
+	st.markdown('### Number Of Positive Conversions, Negative Conversions And Joining Pending')
 	st.write('\n\n')
-	st.write('\n\n As can be seen, out of %s total selections:\n\n %s candidates were offered \n\n Out of which, %s Candidates were Positively Converted \n\n %s Candidates were not Converted \n\n %s Candidate Conversions are still Pending '%(total_selections1.values[0],offer_count.values[1],total_selections.values[1,1],total_selections.values[0,0],0))
+	st.write('\n\n As can be seen, out of %s total selections:\n\n %s candidates were offered \n\n Out of which, %s Candidates were Positively Converted \n\n %s Candidates were not Converted \n\n %s Candidate Conversions are still Pending '%(total_selections1.values[0],offer_count.values[1],total_selections.values[2,2],total_selections.values[0,0],total_selections.values[1,1]))
 	if st.sidebar.checkbox('Visual',True, key=4):
 		fig1=px.pie(status_count, values='Count',names='Status')
 		st.plotly_chart(fig1)
