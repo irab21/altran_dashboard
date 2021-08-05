@@ -1274,7 +1274,7 @@ if password== 'delhivery@2020':
 	df=pd.DataFrame({'Stage':['Selections','Pending','Joining'],'Number':[[selections],[pending],[joinings]]})
 #	st.write(df)
 	#df7=pd.DataFrame({'Stage':['Selections','Joining'],'Number':[[total_selections1.values[0],[total_selections.values[1,0]]]})
-	fi7=px.funnel(df,y='Stage',x=[selections,pending,joinings],labels='Number of Candidates',color='Stage')
+	fi7=px.funnel(df,y='Stage',x=[selections,pending,joinings],labels='Number of Candidates',color='Number')
 	#fig7=px.funnel(df7,x='Stage',y='Number',labels='Number of Candidates')
 	st.plotly_chart(fi7)
 
