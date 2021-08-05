@@ -1261,7 +1261,7 @@ if password== 'delhivery@2020':
 
 	st.write("***Throughput ratios***")
 	total_submissions=data['Submission Date'].count()
-	pending=data.groupby['Status'].count()
+	pending=data.groupby(['Status']).count()
 	selections=data['Selection Date'].count()
 	offers=data['Offer Date'].count()
 	joinings=data['Joining Date'].count()
