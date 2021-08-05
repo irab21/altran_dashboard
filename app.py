@@ -887,7 +887,7 @@ if password== 'datacore@2020':
 		data = pd.read_excel(DATA_URL)
 		return data
 
- 
+
 	data = load_data()
 
 	total_selections=data['Status'].value_counts()
@@ -902,13 +902,13 @@ if password== 'datacore@2020':
 
 	clients= data['Client'].value_counts()
 	#titles
-	st.title('Client Report April-July 2021')
+	st.title('Client April-July 2021')
 	st.sidebar.title('%s  '% (clients.index[0]))
 
 	st.markdown('### By Posterity Better Solutions')
 	st.sidebar.markdown('### A Review of the past year ')
 
-	st.sidebar.markdown("### Number Of Positive Coneversions, Negative Conversions, and Pending Conversions")
+	st.sidebar.markdown("### Number Of Positive Coneversions, Negative Conversions, and Pending Joinings")
 	
 	#newdataframe
 	status_count= data['Status'].value_counts()
@@ -919,14 +919,13 @@ if password== 'datacore@2020':
 	#st.write(offer_count)
 
 
-	st.markdown('### Number Of Positive Conversions, Negative Conversions And Pending Conversions')
+	st.markdown('### Number Of Positive Conversions, Negative Conversions And Joining Pending')
 	st.write('\n\n')
-	st.write('\n\n As can be seen, out of %s total selections:\n\n %s candidates were offered \n\n Out of which, %s Candidates were Positively Converted \n\n %s Candidates were not Converted \n\n %s Candidate Conversions are still Pending '%(total_selections1.values[0],offer_count.values[1],total_selections.values[1,1],total_selections.values[0,0],0))
+	st.write('\n\n As can be seen, out of %s total selections:\n\n %s candidates were offered \n\n Out of which, %s Candidates were Positively Converted \n\n %s Candidates were not Converted \n\n %s Candidates are yet to join. '%(total_selections1.values[0],offer_count.values[1],total_selections.values[2,2],total_selections.values[0,0],total_selections.values[1,1]))
 	if st.sidebar.checkbox('Visual',True, key=4):
 		fig1=px.pie(status_count, values='Count',names='Status')
 		st.plotly_chart(fig1)
 
-	
 
 
 	st.sidebar.markdown("### Level Of roles Worked On")
@@ -944,7 +943,9 @@ if password== 'datacore@2020':
 	level_roles = data['Level'].value_counts()
 	level_conversion1=data.groupby('Level').count()
 	level_conversion1=level_conversion1.loc[:,"Joining TAT"]
+	#st.write(level_conversion1)
 	level_roles = pd.DataFrame({'Level Of Roles':level_roles.index, 'Count Of Selections': level_roles.values, 'Count Of Joinings': level_conversion1.values })
+	#st.write(level_roles)
 	st.markdown("### Level of Roles Worked On")
 	st.write('Posterity worked on over **%s** skills and roles for %s. \n\n Maximum hiring was done for the Backend Devloper Role and Java as the skill'%(skill.values[0],clients.index[0] ))
 	st.write('Hiring was done for three levels, **Junior Level** for Offered CTC < 15 LPA, **Middle Level** for offered CTC Between 15 LPA to 35 LPA, and **Senior Level** for Offered CTC > 35 LPA, Roles. \n\n **%s** Selections were done for the Junior Level roles. \n\n **%s** Selections were done for the Middle Level Roles. \n\n **%s** Selections were done for Senior Level roles'%(level_conversion.values[0,0],level_conversion.values[1,1],0))
@@ -1131,7 +1132,7 @@ if password== 'delhivery@2020':
 
 	st.markdown('### Number Of Positive Conversions, Negative Conversions And Joining Pending')
 	st.write('\n\n')
-	st.write('\n\n As can be seen, out of %s total selections:\n\n %s candidates were offered \n\n Out of which, %s Candidates were Positively Converted \n\n %s Candidates were not Converted \n\n %s Candidate Conversions are yet to join. '%(total_selections1.values[0],offer_count.values[1],total_selections.values[2,2],total_selections.values[0,0],total_selections.values[1,1]))
+	st.write('\n\n As can be seen, out of %s total selections:\n\n %s candidates were offered \n\n Out of which, %s Candidates were Positively Converted \n\n %s Candidates were not Converted \n\n %s Candidates are yet to join. '%(total_selections1.values[0],offer_count.values[1],total_selections.values[2,2],total_selections.values[0,0],total_selections.values[1,1]))
 	if st.sidebar.checkbox('Visual',True, key=4):
 		fig1=px.pie(status_count, values='Count',names='Status')
 		st.plotly_chart(fig1)
