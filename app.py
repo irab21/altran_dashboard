@@ -1268,7 +1268,7 @@ if password== 'delhivery@2020':
 	joinings=data['Joining Date'].count()
 	offer_percent=round(offers/selections*100)
 	joining_percent=round(joinings/offers*100)
-	st.write(pending)
+	#st.write(pending)
 	st.write("As can be seen, out of total %s Selections, %s Candidates Joined"%(total_selections1.values[0],total_selections.values[1,0]))
 	st.write("There was a "+str(offer_percent)+"% Selection Conversion and "+str(joining_percent)+"% Offer Conversion")
 	df=pd.DataFrame({'Stage':['Selections','Offers','Joining'],'Number':[[selections],[offers],[joinings]]})
@@ -1294,7 +1294,7 @@ if password== 'delhivery@2020':
 
 	st.write("\n\n_____________________________________________________________________________________________________________________")
 	st.subheader('With that We thank %s  '% (clients.index[0])) 
-	st.write('for their association with Posterity Solutions for FY 2020-21. \n\n We hope the interactive dashboard could give you an insight on the Client Engagement, our values are founded on. \n\n We look forward to a long and mutually fruitful association with you. \n\n Regards Posterity ')
+	st.write('for their association with Posterity Solutions. \n\n We hope the interactive dashboard could give you an insight on the Client Engagement, our values are founded on. \n\n We look forward to a long and mutually fruitful association with you. \n\n Regards Posterity ')
 	st.image(image,width=150)
 
 
