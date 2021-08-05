@@ -1153,9 +1153,9 @@ if password== 'delhivery@2020':
 	level_roles = data['Level'].value_counts()
 	level_conversion1=data.groupby('Level').count()
 	level_conversion1=level_conversion1.loc[:,"Joining TAT"]
-	st.write(level_conversion1)
+	#st.write(level_conversion1)
 	level_roles = pd.DataFrame({'Level Of Roles':level_roles.index, 'Count Of Selections': level_roles.values, 'Count Of Joinings': level_conversion1.values })
-	st.write(level_roles)
+	#st.write(level_roles)
 	st.markdown("### Level of Roles Worked On")
 	st.write('Posterity worked on over **%s** skills and roles for %s. \n\n Maximum hiring was done for the Backend Devloper Role and Java as the skill'%(skill.values[0],clients.index[0] ))
 	st.write('Hiring was done for three levels, **Junior Level** for Offered CTC < 15 LPA, **Middle Level** for offered CTC Between 15 LPA to 35 LPA, and **Senior Level** for Offered CTC > 35 LPA, Roles. \n\n **%s** Selections were done for the Junior Level roles. \n\n **%s** Selections were done for the Middle Level Roles. \n\n **%s** Selections were done for Senior Level roles'%(level_conversion.values[0,0],level_conversion.values[1,1],0))
@@ -1241,6 +1241,51 @@ if password== 'delhivery@2020':
 		plt.yticks([])
 		st.pyplot()
 	st.write('As can be seen, this is a WordCloud of all the skills and Roles for which Posterity worked on for %s'%clients.index[0])
+	
+	st.write("***Diversity Ratio***")
+
+	st.write("The figure depicts the diversity percentage in all the three stages from selection to joining of candidates.")
+	labels=['Female','Male']
+	gender_data=data.groupby('Gender').count()
+	#st.write(gender_data)
+	
+	fig10 = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'},{'type':'domain'}]])
+	fig10.add_trace(go.Pie(labels=labels, values=[0,7], name="Selected Candidates Diversity Percentage"),1, 1)
+	fig10.add_trace(go.Pie(labels=labels, values=[0,5], name="Offered Candidates Diversity Percentage"),1, 2)
+	fig10.add_trace(go.Pie(labels=labels, values=[0,2],name="Joined Candidates Diversity Percentage"),1, 3)
+
+	fig10.update_traces(hole=.4, hoverinfo="label+percent+name")
+	fig10.update_layout(title_text="Diversity Percentage for all three stages",annotations=[dict(text='Selections', x=0.09, y=0.5, font_size=12, showarrow=False),
+                 dict(text='Offered', x=0.50, y=0.5, font_size=12, showarrow=False),dict(text='Joined', x=0.90, y=0.5, font_size=12, showarrow=False)])
+	st.plotly_chart(fig10)
+
+	st.write("***Throughput ratios***")
+	total_submissions=data['Submission Date'].count()
+	selections=data['Selection Date'].count()
+	offers=data['Offer Date'].count()
+	joinings=data['Joining Date'].count()
+	offer_percent=round(offers/selections*100)
+	joining_percent=round(joinings/offers*100)
+	st.write("As can be seen, out of total %s Selections, %s Candidates Joined"%(total_selections1.values[0],total_selections.values[1,0]))
+	st.write("There was a "+str(offer_percent)+"% Selection Conversion and "+str(joining_percent)+"% Offer Conversion")
+	df=pd.DataFrame({'Stage':['Selections','Joining'],'Number':[[selections],[joinings]]})
+#	st.write(df)
+	#df7=pd.DataFrame({'Stage':['Selections','Joining'],'Number':[[total_selections1.values[0],[total_selections.values[1,0]]]})
+	fi7=px.funnel(df,y='Stage',x=[selections,joinings],labels='Number of Candidates')
+	#fig7=px.funnel(df7,x='Stage',y='Number',labels='Number of Candidates')
+	st.plotly_chart(fi7)
+
+
+
+
+	st.write("Hiring was done for the Highlighted Locations")
+	lat=data['lat']
+	lon=data['lon']
+	map=pd.DataFrame({'lat':lat.values,'lon':lon.values})
+
+	#st.write(map)
+	st.map(map)
+	
 
 
 
