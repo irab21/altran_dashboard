@@ -41,7 +41,7 @@ if password == "altran@2020":
 
 	clients= data['Client'].value_counts()
 	#titles
-	st.title('Client Report April-June 2021')
+	st.title('Client Report April-July 2021')
 	st.sidebar.title('%s  '% (clients.index[0]))
 
 	st.markdown('### By Posterity Better Solutions')
@@ -1911,7 +1911,7 @@ if password== 'airtelpaymentsbank@2020':
 
 
 	total_selections1=data['Client'].value_counts()
-	
+	total_selections=data.groupby('Client').count()
 	total_selections1=total_selections1.sum()
 	#st.write(total_selections1)
 	#st.write(total_selections)
