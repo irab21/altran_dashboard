@@ -473,13 +473,13 @@ if password== 'bottomline@2020':
 
 	clients= data['Client'].value_counts()
 	#titles
-	st.title('Client Report April-June 2021')
+	st.title('Client Report April-July 2021')
 	st.sidebar.title('%s  '% (clients.index[0]))
 
 	st.markdown('### By Posterity Better Solutions')
-	st.sidebar.markdown('### A Review of the past year ')
+	st.sidebar.markdown('### A Review of the past few months ')
 
-	st.sidebar.markdown("### Number Of Positive Coneversions, Negative Conversions, and Pending Conversions")
+	st.sidebar.markdown("### Number Of Positive Coneversions, Negative Conversions, and Joining Pending")
 	
 	#newdataframe
 	status_count= data['Status'].value_counts()
@@ -492,7 +492,7 @@ if password== 'bottomline@2020':
 
 	st.markdown('### Number Of Positive Conversions, Negative Conversions And Joining Pending')
 	st.write('\n\n')
-	st.write('\n\n As can be seen, out of %s total selections:\n\n %s candidates were offered \n\n Out of which, %s Candidates were Positively Converted \n\n %s Candidates were not Converted \n\n %s Candidate Conversions are still Pending '%(total_selections1.values[0],offer_count.values[1],total_selections.values[2,2],total_selections.values[0,0],total_selections.values[1,1]))
+	st.write('\n\n As can be seen, out of %s total selections:\n\n %s candidates were offered \n\n Out of which, %s Candidates were Positively Converted \n\n %s Candidates were not Converted \n\n %s Candidate Conversions are yet to join '%(total_selections1.values[0],offer_count.values[1],total_selections.values[2,2],total_selections.values[0,0],total_selections.values[1,1]))
 	if st.sidebar.checkbox('Visual',True, key=4):
 		fig1=px.pie(status_count, values='Count',names='Status')
 		st.plotly_chart(fig1)
@@ -631,10 +631,10 @@ if password== 'bottomline@2020':
 	joining_percent=round(joinings/offers*100)
 	st.write("As can be seen, out of total %s Selections, %s Candidates Joined"%(total_selections1.values[0],total_selections.values[1,0]))
 	st.write("There was a "+str(offer_percent)+"% Selection Conversion and "+str(joining_percent)+"% Offer Conversion")
-	df=pd.DataFrame({'Stage':['Selections','Joining'],'Number':[[selections],[joinings]]})
+	df=pd.DataFrame({'Stage':['Selections','Offers','Joining'],'Number':[[selections],[offers],[joinings]]})
 #	st.write(df)
 	#df7=pd.DataFrame({'Stage':['Selections','Joining'],'Number':[[total_selections1.values[0],[total_selections.values[1,0]]]})
-	fi7=px.funnel(df,y='Stage',x=[selections,joinings],labels='Number of Candidates')
+	fi7=px.funnel(df,y='Stage',x=[selections,offers,joinings],labels='Number of Candidates')
 	#fig7=px.funnel(df7,x='Stage',y='Number',labels='Number of Candidates')
 	st.plotly_chart(fi7)
 
