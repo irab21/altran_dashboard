@@ -847,10 +847,10 @@ if password== 'britishtelecom@2020':
 	joining_percent=round(joinings/offers*100)
 	st.write("As can be seen, out of total %s Selections, %s Candidates Joined"%(total_selections1.values[0],total_selections.values[1,0]))
 	st.write("There was a "+str(offer_percent)+"% Selection Conversion and "+str(joining_percent)+"% Offer Conversion")
-	df=pd.DataFrame({'Stage':['Selections','Pending','Joining'],'Number':[[selections],[Pending],[joinings]]})
+	df=pd.DataFrame({'Stage':['Selections','Offers','Joining'],'Number':[[selections],[offers],[joinings]]})
 #	st.write(df)
 	#df7=pd.DataFrame({'Stage':['Selections','Joining'],'Number':[[total_selections1.values[0],[total_selections.values[1,0]]]})
-	fi7=px.funnel(df,y='Stage',x=[selections,pending,joinings],labels='Number of Candidates')
+	fi7=px.funnel(df,y='Stage',x=[selections,offers,joinings],labels='Number of Candidates')
 	#fig7=px.funnel(df7,x='Stage',y='Number',labels='Number of Candidates')
 	st.plotly_chart(fi7)
 
