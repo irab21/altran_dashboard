@@ -1732,7 +1732,7 @@ if password== 'r1rcm@2020':
 	st.image(image,width=350)
 
 
-	DATA_URL= 'file9.xlsx'
+	DATA_URL= 'file10.xlsx'
 
 	#@st.cache(persist =True)
 	def load_data():
@@ -1891,12 +1891,12 @@ if password== 'r1rcm@2020':
 
 
 if password== 'airtelpaymentsbank@2020':
-	image_url='posterityfinal.png'
+		image_url='posterityfinal.png'
 	image= Image.open(image_url) 
 	st.image(image,width=350)
 
 
-	DATA_URL= 'file10.xlsx'
+	DATA_URL= 'file8.xlsx'
 
 	#@st.cache(persist =True)
 	def load_data():
@@ -1911,13 +1911,10 @@ if password== 'airtelpaymentsbank@2020':
 
 
 	total_selections1=data['Client'].value_counts()
-	total_selections=data.groupby('Client').count()
+	total_selections1=data.groupby('Client').count()
 	total_selections1=total_selections1.sum()
-	st.write(total_selections1)
-	st.write(total_selections)
-
-	
-	
+	#st.write(total_selections1)
+	#st.write(total_selections)
 
 	clients= data['Client'].value_counts()
 	#titles
@@ -1925,10 +1922,10 @@ if password== 'airtelpaymentsbank@2020':
 	st.sidebar.title('%s  '% (clients.index[0]))
 
 	st.markdown('### By Posterity Better Solutions')
-	st.sidebar.markdown('### A Review of the past few months ')
+	st.sidebar.markdown('### A Review of the past year ')
 
-	st.sidebar.markdown("### Number Of Positive Coneversions and Negative Conversions")
-
+	st.sidebar.markdown("### Number Of Positive Coneversions, Negative Conversions, and Pending Conversions")
+	
 	#newdataframe
 	status_count= data['Status'].value_counts()
 	status_count=pd.DataFrame({'Status':status_count.index, 'Count':status_count.values})
@@ -1938,10 +1935,9 @@ if password== 'airtelpaymentsbank@2020':
 	#st.write(offer_count)
 
 
-
-	st.markdown('### Number Of Positive Conversions and Negative Conversions')
+	st.markdown('### Number Of Positive Conversions, Negative Conversions And Pending Conversions')
 	st.write('\n\n')
-	st.write('\n\n As can be seen, out of %s total selections: \n\n Out of which, %s Candidates were Positively Converted \n\n %s Candidates were not Converted '%(total_selections1.values[0],total_selections.values[1,0],total_selections.values[0,0]))
+	st.write('\n\n As can be seen, out of %s total selections:\n\n %s candidates were offered \n\n Out of which, %s Candidates were Positively Converted \n\n %s Candidates were not Converted \n\n %s Candidate Conversions are still Pending '%(total_selections1.values[0],offer_count.values[1],total_selections.values[1,1],total_selections.values[0,0],0))
 	if st.sidebar.checkbox('Visual',True, key=4):
 		fig1=px.pie(status_count, values='Count',names='Status')
 		st.plotly_chart(fig1)
@@ -1964,13 +1960,12 @@ if password== 'airtelpaymentsbank@2020':
 	level_conversion1=data.groupby('Level').count()
 	level_conversion1=level_conversion1.loc[:,"Joining TAT"]
 	level_roles = pd.DataFrame({'Level Of Roles':level_roles.index, 'Count Of Selections': level_roles.values, 'Count Of Joinings': level_conversion1.values })
-	#st.write(level_roles)
 	st.markdown("### Level of Roles Worked On")
-	st.write('Posterity worked on over **%s** skills and roles for %s. \n\n Maximum hiring was done for the Backend Devloper Role and Java as the skill'%(skill.values[0],clients.index[0]) )
-	st.write('Hiring was done for two levels, **Junior Level** for Offered CTC < 15 LPA, and **Senior Level** for Offered CTC > 35 LPA, Roles. \n\n **%s** Selections were done for the Junior Level roles. \n\n **%s** Selections were done for the Middle Level Roles. \n\n **%s** Selections were done for Senior Level roles'%(level_conversion.values[0,0],0,0))
+	st.write('Posterity worked on over **%s** skills and roles for %s. \n\n Maximum hiring was done for the Backend Devloper Role and Java as the skill'%(skill.values[0],clients.index[0] ))
+	st.write('Hiring was done for three levels, **Junior Level** for Offered CTC < 15 LPA, **Middle Level** for offered CTC Between 15 LPA to 35 LPA, and **Senior Level** for Offered CTC > 35 LPA, Roles. \n\n **%s** Selections were done for the Junior Level roles. \n\n **%s** Selections were done for the Middle Level Roles. \n\n **%s** Selections were done for Senior Level roles'%(level_conversion.values[0,0],0,0))
 	st.write('Hover Over the Graph to Know the Number of Selections and Joinings for each Level.')
 	if st.sidebar.checkbox('Visual',True,key=1):
-		fig2=px.scatter(level_roles, x='Level Of Roles', y= 'Count Of Selections',hover_name='Level Of Roles',hover_data=['Count Of Selections','Count Of Joinings'])
+		fig2=px.area(level_roles, x='Level Of Roles', y= 'Count Of Selections',hover_name='Level Of Roles',hover_data=['Count Of Selections','Count Of Joinings'])
 
 		st.plotly_chart(fig2)
 
@@ -1989,7 +1984,7 @@ if password== 'airtelpaymentsbank@2020':
 	st.write("Selection Turn Around Time (TAT) represents the Time in terms of **Days** taken by %s to select a submitted candidate"%(clients.index[0]))
 	st.write("**%s** Days were taken on an average for a selection. \n\n**%s** days was the maximum number of days that was taken for a selection \n\n **%s** days was the minimum number of days that was taken for a selection"%(selection_tat_count.values[0,1],selection_tat_count.values[2,1],selection_tat_count.values[1,1]))
 	if st.sidebar.checkbox('Visual',True,key=2):
-		fig3=px.bar(selection_tat_count,x='Selection TAT',y='Days', color='Days', text='Days',title='Max, Average and Min TAT For Selection', hover_name='Selection TAT',hover_data=['Days'])
+		fig3=px.bar(selection_tat_count,x='Selection TAT',y='Days', color='Days', text='Days',title='Max, Average and Min TAT For Selection', hover_name='Selection TAT',hover_data=['Days'],height=600)
 		fig3.update_traces(texttemplate='%{text:.2s}', textposition='outside',width=0.4)
 		fig3.update_layout(uniformtext_minsize=8, uniformtext_mode='hide')
 		fig3.update_layout(hovermode='x')
@@ -2008,7 +2003,7 @@ if password== 'airtelpaymentsbank@2020':
 	st.write("**%s** Days were taken on an average to convert a selection to an offer. \n\n Maximum **%s** Days were taken for the same. \n\n Minimum **%s** Days were taken"%(offer_tat_count.values[0,1],offer_tat_count.values[2,1],offer_tat_count.values[1,1]))
 
 	if st.sidebar.checkbox('Visual',True,key=3):
-		fig4=px.bar(offer_tat_count,x='Offer TAT',y='days', color='days',text='days',title='Max, Average and Min TAT For Offer Conversion',hover_name='Offer TAT',hover_data=['days'])
+		fig4=px.bar(offer_tat_count,x='Offer TAT',y='days', color='days',text='days',title='Max, Average and Min TAT For Offer Conversion',hover_name='Offer TAT',hover_data=['days'],height=500)
 		fig4.update_traces(texttemplate='%{text:.2s}', textposition='outside',width=0.4)
 		fig4.update_layout(uniformtext_minsize=8, uniformtext_mode='hide')
 		fig4.update_layout(hovermode='x')
@@ -2022,9 +2017,9 @@ if password== 'airtelpaymentsbank@2020':
 	#st.write(joining_tat_count)
 	st.markdown('### Joining TAT')
 	st.write("Joining Turn Around Time (TAT) represents the time in terms of **Days** taken by %s to convert the status of a candidate from Offer to Joining"%(clients.index[0]))
-	st.write("**%s** Positive Conversions took place,\n\n **%s** Days on an average were taken for an Offer a Joining after offer confirmation \n\n**%s** Days were the minimum number of days taken for the same \n\n **%s** days were the maximum number of days taken for a joining."%(total_selections.values[1,2],joining_tat_count.values[0,1],joining_tat_count.values[1,1],joining_tat_count.values[2,1]))
+	st.write("**%s** Positive Conversions took place,\n\n **%s** Days on an average were taken for an Offer a Joining after offer confirmation \n\n**%s** Days were the minimum number of days taken for the same \n\n **%s** days were the maximum number of days taken for a joining."%(total_selections.values[1,1],joining_tat_count.values[0,1],joining_tat_count.values[1,1],joining_tat_count.values[2,1]))
 	if st.sidebar.checkbox('Visual',True,key=5):
-		fig5=px.bar(joining_tat_count,x='Joining TAT',y='days', color='days',text='days',title='Max,Average and Min TAT for Joining', hover_name="Joining TAT",hover_data=['days'])
+		fig5=px.bar(joining_tat_count,x='Joining TAT',y='days', color='days',text='days',title='Max,Average and Min TAT for Joining', hover_name="Joining TAT",hover_data=['days'],height=500)
 		fig5.update_traces(texttemplate='%{text: .2s}', textposition='outside',width=0.4)
 		fig5.update_layout(uniformtext_minsize=8, uniformtext_mode='hide')
 		st.plotly_chart(fig5)
@@ -2050,7 +2045,6 @@ if password== 'airtelpaymentsbank@2020':
 		plt.yticks([])
 		st.pyplot()
 	st.write('As can be seen, this is a WordCloud of all the skills and Roles for which Posterity worked on for %s'%clients.index[0])
-	
 	st.write("***Diversity Ratio***")
 
 	st.write("The figure depicts the diversity percentage in all the three stages from selection to joining of candidates.")
@@ -2059,9 +2053,9 @@ if password== 'airtelpaymentsbank@2020':
 	#st.write(gender_data)
 	
 	fig10 = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'},{'type':'domain'}]])
-	fig10.add_trace(go.Pie(labels=labels, values=[0,6], name="Selected Candidates Diversity Percentage"),1, 1)
-	fig10.add_trace(go.Pie(labels=labels, values=[0,4], name="Offered Candidates Diversity Percentage"),1, 2)
-	fig10.add_trace(go.Pie(labels=labels, values=[0,4], name="Joined Candidates Diversity Percentage"),1, 3)
+	fig10.add_trace(go.Pie(labels=labels, values=[0,7], name="Selected Candidates Diversity Percentage"),1, 1)
+	fig10.add_trace(go.Pie(labels=labels, values=[0,3], name="Offered Candidates Diversity Percentage"),1, 2)
+	fig10.add_trace(go.Pie(labels=labels, values=[0,2],name="Joined Candidates Diversity Percentage"),1, 3)
 
 	fig10.update_traces(hole=.4, hoverinfo="label+percent+name")
 	fig10.update_layout(title_text="Diversity Percentage for all three stages",annotations=[dict(text='Selections', x=0.09, y=0.5, font_size=12, showarrow=False),
@@ -2070,17 +2064,20 @@ if password== 'airtelpaymentsbank@2020':
 
 	st.write("***Throughput ratios***")
 	total_submissions=data['Submission Date'].count()
+	pending=data.groupby(['Status']).count()
+	pending=pending.values[1,1]
 	selections=data['Selection Date'].count()
 	offers=data['Offer Date'].count()
 	joinings=data['Joining Date'].count()
 	offer_percent=round(offers/selections*100)
 	joining_percent=round(joinings/offers*100)
-	st.write("As can be seen, out of total %s Selections, %s Candidates Joined"%(total_selections1.values[0],total_selections.values[1,0]))
+	#st.write(pending)
+	st.write("As can be seen, out of total %s Selections, %s Candidates Joined"%(total_selections1.values[0],total_selections.values[1,1]))
 	st.write("There was a "+str(offer_percent)+"% Selection Conversion and "+str(joining_percent)+"% Offer Conversion")
-	df=pd.DataFrame({'Stage':['Selections','Joining'],'Number':[[selections],[joinings]]})
+	df=pd.DataFrame({'Stage':['Selections','Offers','Joining'],'Number':[[selections],[offers],[joinings]]})
 #	st.write(df)
 	#df7=pd.DataFrame({'Stage':['Selections','Joining'],'Number':[[total_selections1.values[0],[total_selections.values[1,0]]]})
-	fi7=px.funnel(df,y='Stage',x=[selections,joinings],labels='Number of Candidates')
+	fi7=px.funnel(df,y='Stage',x=[selections,offers,joinings],labels='Number of Candidates')
 	#fig7=px.funnel(df7,x='Stage',y='Number',labels='Number of Candidates')
 	st.plotly_chart(fi7)
 
@@ -2094,6 +2091,7 @@ if password== 'airtelpaymentsbank@2020':
 
 	#st.write(map)
 	st.map(map)
+	
 
 	
 
