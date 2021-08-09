@@ -1891,12 +1891,12 @@ if password== 'r1rcm@2020':
 
 
 if password== 'airtelpaymentsbank@2020':
-		image_url='posterityfinal.png'
+	image_url='posterityfinal.png'
 	image= Image.open(image_url) 
 	st.image(image,width=350)
 
 
-	DATA_URL= 'file8.xlsx'
+	DATA_URL= 'file10.xlsx'
 
 	#@st.cache(persist =True)
 	def load_data():
