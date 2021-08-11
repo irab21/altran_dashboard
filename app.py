@@ -2156,7 +2156,7 @@ if password == "dailyhunt@2021":
 
 	st.markdown('### Number Of Positive Conversions and Negative Conversions')
 	st.write('\n\n')
-	st.write('\n\n As can be seen, out of %s total selections: \n\n Out of which, %s Candidates were Positively Converted \n\n %s Candidates were not Converted and \n\n %s Candidates are yet to join '%(total_selections1.values[0],total_selections.values[0,0],0,0))
+	st.write('\n\n As can be seen, out of %s total selections: \n\n Out of which, %s Candidates were Positively Converted \n\n %s Candidates were not Converted and \n\n %s Candidates are yet to join '%(total_selections1.values[0],0,total_selections.values[0,0],0))
 	if st.sidebar.checkbox('Visual',True, key=4):
 		fig1=px.pie(status_count, values='Count',names='Status')
 		st.plotly_chart(fig1)
@@ -2230,21 +2230,21 @@ if password == "dailyhunt@2021":
 		st.plotly_chart(fig4)
 
 
-	st.sidebar.markdown('### Joining TAT')
+	#st.sidebar.markdown('### Joining TAT')
 
-	joining_tat_count=data['Joining TAT'].describe().loc[['mean','min','max']].round(decimals=0)
-	joining_tat_count=pd.DataFrame({'Joining TAT':joining_tat_count.index,'days':joining_tat_count.values})
+	#joining_tat_count=data['Joining TAT'].describe().loc[['mean','min','max']].round(decimals=0)
+	#joining_tat_count=pd.DataFrame({'Joining TAT':joining_tat_count.index,'days':joining_tat_count.values})
 	#st.write(joining_tat_count)
-	st.markdown('### Joining TAT')
-	st.write("Joining Turn Around Time (TAT) represents the time in terms of **Days** taken by %s to convert the status of a candidate from Offer to Joining"%(clients.index[0]))
-	st.write("**%s** Positive Conversions took place,\n\n **%s** Days on an average were taken for an Offer a Joining after offer confirmation \n\n**%s** Days were the minimum number of days taken for the same \n\n **%s** days were the maximum number of days taken for a joining."%(total_selections.values[1,2],joining_tat_count.values[0,1],joining_tat_count.values[1,1],joining_tat_count.values[2,1]))
-	if st.sidebar.checkbox('Visual',True,key=5):
-		fig5=px.bar(joining_tat_count,x='Joining TAT',y='days', color='days',text='days',title='Max,Average and Min TAT for Joining', hover_name="Joining TAT",hover_data=['days'])
-		fig5.update_traces(texttemplate='%{text: .2s}', textposition='outside',width=0.4)
-		fig5.update_layout(uniformtext_minsize=8, uniformtext_mode='hide')
-		st.plotly_chart(fig5)
+	#st.markdown('### Joining TAT')
+	#st.write("Joining Turn Around Time (TAT) represents the time in terms of **Days** taken by %s to convert the status of a candidate from Offer to Joining"%(clients.index[0]))
+	#st.write("**%s** Positive Conversions took place,\n\n **%s** Days on an average were taken for an Offer a Joining after offer confirmation \n\n**%s** Days were the minimum number of days taken for the same \n\n **%s** days were the maximum number of days taken for a joining."%(total_selections.values[1,2],joining_tat_count.values[0,1],joining_tat_count.values[1,1],joining_tat_count.values[2,1]))
+	#if st.sidebar.checkbox('Visual',True,key=5):
+	#	fig5=px.bar(joining_tat_count,x='Joining TAT',y='days', color='days',text='days',title='Max,Average and Min TAT for Joining', hover_name="Joining TAT",hover_data=['days'])
+	#	fig5.update_traces(texttemplate='%{text: .2s}', textposition='outside',width=0.4)
+	#	fig5.update_layout(uniformtext_minsize=8, uniformtext_mode='hide')
+	#	st.plotly_chart(fig5)
 
-	st.sidebar.header('Word Cloud')
+	#st.sidebar.header('Word Cloud')
 
 	word_category= st.sidebar.radio('Display Word Cloud for Skill',('Skill','Role'))
 
