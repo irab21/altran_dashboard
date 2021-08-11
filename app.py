@@ -10,7 +10,7 @@ from plotly.subplots import make_subplots
 
 
 password= st.text_input('Please Enter The Password')
-if password == "altran@2020":
+if password == "fis@2021":
 	image_url='posterityfinal.png'
 	image= Image.open(image_url) 
 	st.image(image,width=350)
