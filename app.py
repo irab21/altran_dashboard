@@ -224,7 +224,7 @@ if password == "fis@2021":
 
 
 
-if password== 'blackhawk@2020':
+if password== 'navi@2021':
 
 	image_url='posterityfinal.png'
 	image= Image.open(image_url) 
