@@ -1938,7 +1938,7 @@ if password== 'guardian@2021':
 
 	st.write("\n\n_____________________________________________________________________________________________________________________")
 	st.subheader('With that We thank %s  '% (clients.index[0])) 
-	st.write('for their association with Posterity Solutions for FY 2020-21. \n\n We hope the interactive dashboard could give you an insight on the Client Engagement, our values are founded on. \n\n We look forward to a long and mutually fruitful association with you. \n\n Regards Posterity ')
+	st.write('for their association with Posterity Solutions. \n\n We hope the interactive dashboard could give you an insight on the Client Engagement, our values are founded on. \n\n We look forward to a long and mutually fruitful association with you. \n\n Regards Posterity ')
 	st.image(image,width=150)
 
 
