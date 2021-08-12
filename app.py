@@ -1885,6 +1885,54 @@ if password== 'guardian@2021':
 		plt.yticks([])
 		st.pyplot()
 	st.write('As can be seen, this is a WordCloud of all the skills and Roles for which Posterity worked on for %s'%clients.index[0])
+	
+	st.write("***Diversity Ratio***")
+
+	st.write("The figure depicts the diversity percentage in all the three stages from selection to joining of candidates.")
+	labels=['Female','Male']
+	gender_data=data.groupby('Gender').count()
+	#st.write(gender_data)
+	
+	fig10 = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'},{'type':'domain'}]])
+	fig10.add_trace(go.Pie(labels=labels, values=[4,25], name="Selected Candidates Diversity Percentage"),1, 1)
+	fig10.add_trace(go.Pie(labels=labels, values=[2,19], name="Offered Candidates Diversity Percentage"),1, 2)
+	fig10.add_trace(go.Pie(labels=labels, values=[0,7],name="Joined Candidates Diversity Percentage"),1, 3)
+
+	fig10.update_traces(hole=.4, hoverinfo="label+percent+name")
+	fig10.update_layout(title_text="Diversity Percentage for all three stages",annotations=[dict(text='Selections', x=0.09, y=0.5, font_size=12, showarrow=False),
+                 dict(text='Offered', x=0.50, y=0.5, font_size=12, showarrow=False),dict(text='Joined', x=0.90, y=0.5, font_size=12, showarrow=False)])
+	st.plotly_chart(fig10)
+
+	st.write("***Throughput ratios***")
+	total_submissions=data['Submission Date'].count()
+	pending=data.groupby(['Status']).count()
+	pending=pending.values[1,1]
+	selections=data['Selection Date'].count()
+	offers=data['Offer Date'].count()
+	joinings=data['Joining Date'].count()
+	offer_percent=round(offers/selections*100)
+	joining_percent=round(joinings/offers*100)
+	#st.write(pending)
+	st.write("As can be seen, out of total %s Selections, %s Candidates Joined"%(total_selections1.values[0],total_selections.values[1,1]))
+	st.write("There was a "+str(offer_percent)+"% Selection Conversion and "+str(joining_percent)+"% Offer Conversion")
+	df=pd.DataFrame({'Stage':['Selections','Offers','Joining'],'Number':[[selections],[offers],[joinings]]})
+#	st.write(df)
+	#df7=pd.DataFrame({'Stage':['Selections','Joining'],'Number':[[total_selections1.values[0],[total_selections.values[1,0]]]})
+	fi7=px.funnel(df,y='Stage',x=[selections,offers,joinings],labels='Number of Candidates')
+	#fig7=px.funnel(df7,x='Stage',y='Number',labels='Number of Candidates')
+	st.plotly_chart(fi7)
+
+
+
+
+	st.write("Hiring was done for the Highlighted Locations")
+	lat=data['lat']
+	lon=data['lon']
+	map=pd.DataFrame({'lat':lat.values,'lon':lon.values})
+
+	#st.write(map)
+	st.map(map)
+	
 
 
 
