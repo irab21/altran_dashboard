@@ -1909,7 +1909,7 @@ if password== 'guardian@2021':
 	pending=pending.values[1,1]
 	selections=data['Selection Date'].count()
 	offers=data['Offer Date'].count()
-	joinings=data['Joining Date'].count()
+	joinings=data['Joining TAT'].count()
 	offer_percent=round(offers/selections*100)
 	joining_percent=round(joinings/offers*100)
 	#st.write(pending)
