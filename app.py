@@ -2707,6 +2707,7 @@ if password== 'protiviti@2021':
 	st.sidebar.markdown('### Joining TAT')
 
 	joining_tat_count=[76,90,7]
+	joining_tat_count=joining_tat_count.describe()
 	st.write(joining_tat_count)
 	#joining_tat_count=pd.DataFrame({'Joining TAT':joining_tat_count.index,'days':joining_tat_count.values})
 	#st.write(joining_tat_count)
