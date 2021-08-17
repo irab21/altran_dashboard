@@ -2704,11 +2704,11 @@ if password== 'protiviti@2021':
 		st.plotly_chart(fig4)
 
 
-	st.sidebar.markdown('### Joining TAT')
+	#st.sidebar.markdown('### Joining TAT')
 
-	joining_tat_count=data['Joining TAT'].describe().loc[['mean','min','max']].round(decimals=0)
+	#joining_tat_count=data['Joining TAT'].describe().loc[['mean','min','max']].round(decimals=0)
 	
-	joining_tat_count=pd.DataFrame({'Joining TAT':joining_tat_count.index,'days':joining_tat_count.values})
+	#joining_tat_count=pd.DataFrame({'Joining TAT':joining_tat_count.index,'days':joining_tat_count.values})
 	#st.write(joining_tat_count)
 	#st.markdown('### Joining TAT')
 	#st.write("Joining Turn Around Time (TAT) represents the time in terms of **Days** taken by %s to convert the status of a candidate from Offer to Joining"%(clients.index[0]))
