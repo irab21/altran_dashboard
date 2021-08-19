@@ -2964,7 +2964,7 @@ if password == "s&p@2021":
 	fig10 = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'},{'type':'domain'}]])
 	fig10.add_trace(go.Pie(labels=labels, values=[5,6], name="Selected Candidates Diversity Percentage"),1, 1)
 	fig10.add_trace(go.Pie(labels=labels, values=[4,6], name="Offered Candidates Diversity Percentage"),1, 2)
-	fig10.add_trace(go.Pie(labels=labels, values=[4,3], name="Joined Candidates Diversity Percentage"),1, 3)
+	fig10.add_trace(go.Pie(labels=labels, values=[4,4], name="Joined Candidates Diversity Percentage"),1, 3)
 
 	fig10.update_traces(hole=.4, hoverinfo="label+percent+name")
 	fig10.update_layout(title_text="Diversity Percentage for all three stages",annotations=[dict(text='Selections', x=0.09, y=0.5, font_size=12, showarrow=False),
