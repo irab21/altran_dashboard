@@ -830,9 +830,9 @@ if password== 'britishtelecom@2020':
 	#st.write(gender_data)
 	
 	fig10 = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'},{'type':'domain'}]])
-	fig10.add_trace(go.Pie(labels=labels, values=[29,75], name="Selected Candidates Diversity Percentage"),1, 1)
-	fig10.add_trace(go.Pie(labels=labels, values=[22,48], name="Offered Candidates Diversity Percentage"),1, 2)
-	fig10.add_trace(go.Pie(labels=labels, values=[4,9],name="Joined Candidates Diversity Percentage"),1, 3)
+	fig10.add_trace(go.Pie(labels=labels, values=[53,133], name="Selected Candidates Diversity Percentage"),1, 1)
+	fig10.add_trace(go.Pie(labels=labels, values=[38,105], name="Offered Candidates Diversity Percentage"),1, 2)
+	fig10.add_trace(go.Pie(labels=labels, values=[12,36],name="Joined Candidates Diversity Percentage"),1, 3)
 
 	fig10.update_traces(hole=.4, hoverinfo="label+percent+name")
 	fig10.update_layout(title_text="Diversity Percentage for all three stages",annotations=[dict(text='Selections', x=0.09, y=0.5, font_size=12, showarrow=False),
