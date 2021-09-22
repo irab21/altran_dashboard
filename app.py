@@ -712,7 +712,7 @@ if password== 'britishtelecom@2020':
 
 	st.markdown('### Number Of Positive Conversions and Negative Conversions')
 	st.write('\n\n')
-	st.write('\n\n As can be seen, out of %s total selections:\n\n Only %s Candidates were Offered \n\n %s Candidates were Positively Converted \n\n %s Candidates were not Converted'%(total_selections1.values[0],offer_count.values[1],total_selections.values[1,1],total_selections.values[0,0]))
+	st.write('\n\n As can be seen, out of %s total selections: \n\n %s Candidates were Positively Converted \n\n %s Candidates were not Converted \n\n %s Candidates are Yet to Join '%(total_selections1.values[0],offer_count.values[1],total_selections.values[2,2],total_selections.values[0,0],total_selections.values[1,1]))
 	if st.sidebar.checkbox('Visual',True, key=4):
 		fig1=px.pie(status_count, values='Count',names='Status')
 		st.plotly_chart(fig1)
@@ -848,10 +848,10 @@ if password== 'britishtelecom@2020':
 	joining_percent=round(joinings/offers*100)
 	st.write("As can be seen, out of total %s Selections, %s Candidates Joined"%(total_selections1.values[0],total_selections.values[1,0]))
 	st.write("There was a "+str(offer_percent)+"% Selection Conversion and "+str(joining_percent)+"% Offer Conversion")
-	df=pd.DataFrame({'Stage':['Selections','Offers','Joining'],'Number':[[selections],[offers],[joinings]]})
+	df=pd.DataFrame({'Stage':['Selections','Joining'],'Number':[[selections],[joinings]]})
 #	st.write(df)
 	#df7=pd.DataFrame({'Stage':['Selections','Joining'],'Number':[[total_selections1.values[0],[total_selections.values[1,0]]]})
-	fi7=px.funnel(df,y='Stage',x=[selections,offers,joinings],labels='Number of Candidates')
+	fi7=px.funnel(df,y='Stage',x=[selections,joinings],labels='Number of Candidates')
 	#fig7=px.funnel(df7,x='Stage',y='Number',labels='Number of Candidates')
 	st.plotly_chart(fi7)
 
